@@ -1,18 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+// Ruta para la página de bienvenida
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Ruta para la página de inicio de sesión
+Route::get('/login', function () {
+    return view('login.index');
+});
+
+// Ruta para definir el inicio de sesión y se dirija al dashboard
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+})->middleware('auth'); // Solo accesible si el usuario está autenticado
+
+
+// Ruta para procesar el inicio de sesión
+Route::post('/login', [LoginController::class, 'login'])->name('login');

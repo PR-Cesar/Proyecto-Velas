@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,9 +17,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'nombre', // Cambia 'name' por 'nombre'
+        'num_colaborador', // Agrega esta propiedad
+        'contraseña', // Cambia 'password' por 'contraseña'
+        'rol', // Agrega esta propiedad
     ];
 
     /**
@@ -29,7 +29,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'contraseña', // Cambia 'password' por 'contraseña'
         'remember_token',
     ];
 
@@ -40,6 +40,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'contraseña' => 'hashed', // Cambia 'password' por 'contraseña'
     ];
 }
